@@ -1,0 +1,48 @@
+{% load bootstrap4 %}
+
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'hotspot/cover.css' %}" />
+
+<body class="text-center" style="background: url('{% static 'hotspot/pattern.png' %}')">
+
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <h3 class="masthead-brand">sWiFinder</h3>
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link active" href="/hotspot">Home</a>
+          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="#">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">Welcome to sWiFinder.</h1>
+      <p class="lead">sWiFinder helps dream, plan, execute, and monitor home and business wireless networks.</p>
+      <p class="lead">
+        <a href="add/" class="btn btn-lg btn-secondary">Create a Heatmap</a>
+      </p>
+    </main>
+
+    {% if recent_layout_list %}
+      <ul>
+        {% for layout in recent_layout_list %}
+            <li><a href="{url 'hotspot:layout_detail' layout.id %}">{{ layout }}</a></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No layouts are available.</p>
+    {% endif %}
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p></p>
+      </div>
+    </footer>
+  </div>

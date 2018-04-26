@@ -1,5 +1,5 @@
-from django.urls import path, patterns, include, url
-from . import views, settings
+from django.urls import path, include
+from . import views
 from django.conf.urls.static import static
 
 app_name = 'hotspot'
@@ -14,5 +14,5 @@ urlpatterns = [
     path('add/', views.layout_add, name='add layout'),
     #ex: /hotspot/add/submit
     path('submit/', views.upload_layout, name='upload layout'),
-    
+
 ]

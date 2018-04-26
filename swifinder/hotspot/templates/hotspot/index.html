@@ -30,16 +30,6 @@
       </p>
     </main>
 
-    {% if recent_layout_list %}
-      <ul>
-        {% for layout in recent_layout_list %}
-            <li><a href="{url 'hotspot:layout_detail' layout.id %}">{{ layout }}</a></li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p>No layouts are available.</p>
-    {% endif %}
-
     <footer class="mastfoot mt-auto">
       <div class="inner">
         <p></p>

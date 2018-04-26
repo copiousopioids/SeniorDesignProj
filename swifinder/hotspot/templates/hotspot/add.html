@@ -26,43 +26,10 @@
 
       <div class="container">
         <div style="background-color: rgba(150, 150, 150, 0.5); padding: 10px;">
-        <form class="form-horizontal" action="/submit/" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal" action="/hotspot/add/" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
           <fieldset>
-
-          <!-- Form Name -->
-          <legend>New Layout</legend>
-
-          <!-- username input-->
-          <div class="form-group">
-            <label class="col-md control-label" for="layout_user">Layout Username</label>
-            <div class="col-md">
-            <input id="layout_user" name="layout_user" type="text" placeholder="" class="form-control input-md">
-            <span class="help-block">User connected to layout.</span>
-            </div>
-          </div>
-
-          <!-- layout name input-->
-          <div class="form-group">
-            <label class="col-md control-label" for="layout_name">Layout Name</label>
-            <div class="col-md">
-            <input id="layout_name" name="layout_name" type="text" placeholder="" class="form-control input-md">
-            <span class="help-block">Input a descriptive layout name.</span>
-            </div>
-          </div>
-
-          <!-- Image input -->
-          <div class="form-group">
-            <label>Upload Image</label>
-            <div class="input-group">
-                <span class="input-group-btn">
-                    <span class="btn btn-default btn-file">
-                        Browse… <input type="file" id="imgInp">
-                    </span>
-                </span>
-                <input type="text" class="form-control" readonly>
-            </div>
-            <img id='img-upload'/>
-          </div>
+            {{ form.as_p }}
 
           <input class="btn btn-primary" type="submit" value="Upload Layout">
 

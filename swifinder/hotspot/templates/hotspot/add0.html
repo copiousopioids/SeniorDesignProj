@@ -1,0 +1,82 @@
+{% load bootstrap4 %}
+
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'hotspot/cover.css' %}" />
+
+<body class="text-center" style="background: url('{% static 'hotspot/pattern.png' %}')">
+
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <h3 class="masthead-brand">sWiFinder</h3>
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link active" href="/hotspot">Home</a>
+          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="#">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main role="main" class="inner cover">
+
+      <div class="container">
+        <div style="background-color: rgba(150, 150, 150, 0.5); padding: 10px;">
+        <form class="form-horizontal" action="/hotspot/" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset>
+
+          <!-- Form Name -->
+          <legend>New Layout</legend>
+
+          <!-- username input-->
+          <div class="form-group">
+            <label class="col-md control-label" for="layout_user">Layout Username</label>
+            <div class="col-md">
+            <input id="id_layout_user" name="layout_user" type="text" placeholder="" class="form-control input-md">
+            <span class="help-block">User connected to layout.</span>
+            </div>
+          </div>
+
+          <!-- layout name input-->
+          <div class="form-group">
+            <label class="col-md control-label" for="layout_name">Layout Name</label>
+            <div class="col-md">
+            <input id="id_layout_name" name="layout_name" type="text" placeholder="" class="form-control input-md">
+            <span class="help-block">Input a descriptive layout name.</span>
+            </div>
+          </div>
+
+          <!-- Image input -->
+          <div class="form-group">
+            <label>Upload Image</label>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <span class="btn btn-default btn-file">
+                        Browse… <input type="file" id="id_layout_image">
+                    </span>
+                </span>
+                <input type="text" class="form-control" readonly>
+            </div>
+          </div>
+
+          <input class="btn btn-primary" type="submit" value="Upload Layout">
+
+          </fieldset>
+        </form>
+      </div>
+      </div>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p></p>
+      </div>
+    </footer>
+  </div>
+
+</body>

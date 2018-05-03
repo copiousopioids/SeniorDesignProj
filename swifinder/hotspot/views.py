@@ -26,10 +26,9 @@ def layout_add(request):
             layout_title = form.cleaned_data['layout_title']
             print(layout_title)
             layout_owner = form.cleaned_data['layout_owner']
-            layout_image = request.FILES['layout_image']
 
             # layout_image = form.cleaned_data['layout_image']
-            newlayout = Layout(layout_title, layout_owner, layout_image)
+            newlayout = Layout(layout_title, layout_owner, file_field=request.FILES['layout_image'])
             newlayout.save()
             # form.save()
             # Redirect to index after POST

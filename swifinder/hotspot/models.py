@@ -11,7 +11,7 @@ from django.db import models
 class Layout(models.Model):
     layout_title = models.CharField(max_length=50)
     layout_owner = models.CharField(max_length=50)
-    layout_image = models.FileField(upload_to='layouts/')
+    layout_image = models.ImageField(upload_to='layouts/')
 
     def __str__(self):
         return "%s - %s" % (self.layout_title, self.layout_owner)

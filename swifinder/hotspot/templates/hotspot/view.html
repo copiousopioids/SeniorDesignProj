@@ -8,8 +8,29 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'hotspot/cover.css' %}" />
 
+<head>
+  <script>
+    function image(id, img, text) {
+        document.getElementById("image").innerHTML = text + "<div id='" + id + "' class='modal fade' tabindex='-1' role='dialog'>"
+             + "<div class='modal-dialog'><div class='modal-content'><div class='modal-body'>"
+             + "<img src='" + img + "' class='img-responsive'></div></div></div></div>"
+             + "<div class='col-xs-4 col-md-4 text-right'><a class='thumbnail' href='#' data-toggle='modal' data-target='#" + id + "'>"
+             + "<img src='" + img + "'/></a></div>"
+    }
+  </script>
+</head>
+
 <body class="text-center" style="background: url('{% static 'hotspot/pattern.png' %}')">
 
+  <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div id="image"></div>
+
+
+  </div>
+</div>
   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     <header class="masthead mb-auto">
       <div class="inner">
@@ -27,18 +48,18 @@
         {% for layout in recent_layout_list %}
         <div class="item col-lg">
           <div class="thumbnail" style="background-color: rgba(150, 150, 150, 0.5); padding: 10px;">
-            <img class="group list-group-image" src="/media/{{ layout.layout_image }}" alt="" style="width: 100%;"/>
+            <img onclick="image( '{{ layout.id }}', '/media/{{ layout.layout_image }}', '' )" class="group list-group-image" src="/media/{{ layout.layout_image }}" alt="" style="width: 100%;" data-toggle="modal" data-target="#myModal"/>
             <div class="caption">
-              <h4 class="group inner list-group-item-heading">
-                <a href="/hotspot/{{ layout.id }}/">{{ layout }}</a>
-              </h4>
+              <h5 class="group inner list-group-item-heading">
+                <a href="/hotspot/{{ layout.id }}/">{{ layout.layout_title }}<br>{{ layout.layout_owner }}</a>
+              </h5>
             </div>
           </div>
         </div>
         {% endfor %}
       </div>
         {% else %}
-        <p>No polls are available.</p>
+        <p>No layouts are available.</p>
       {% endif %}
 
     <footer class="mastfoot mt-auto">

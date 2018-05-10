@@ -1,0 +1,49 @@
+{% load bootstrap4 %}
+
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'hotspot/cover.css' %}" />
+
+<body class="text-center" style="background: url('{% static 'hotspot/pattern.png' %}')">
+
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <h3 class="masthead-brand">sWiFixer</h3>
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link" href="/hotspot">Home</a>
+          <a class="nav-link active" href="/hotspot/view">View</a>
+          <a class="nav-link" href="#">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+      {% if recent_layout_list %}
+      <div class="row">
+        {% for layout in recent_layout_list %}
+        <div class="item col-lg">
+          <div class="thumbnail" style="background-color: rgba(150, 150, 150, 0.5); padding: 10px;">
+            <img class="group list-group-image" src="/media/{{ layout.layout_image }}" alt="" style="width: 100%;"/>
+            <div class="caption">
+              <h4 class="group inner list-group-item-heading">
+                <a href="/hotspot/{{ layout.id }}/">{{ layout }}</a>
+              </h4>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+        {% else %}
+        <p>No polls are available.</p>
+      {% endif %}
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p></p>
+      </div>
+    </footer>
+  </div>

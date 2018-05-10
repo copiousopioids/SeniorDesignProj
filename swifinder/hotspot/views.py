@@ -15,6 +15,11 @@ def index(request):
 def layout_detail(request, layout_id):
     return HttpResponse("You're looking at layout %s." % layout_id)
 
+def layout_view(request):
+    recent_layout_list = Layout.objects.order_by('id')[:5]
+    context = {'recent_layout_list': recent_layout_list}
+    return render(request, 'hotspot/view.html', context)
+
 def layout_edit(request, layout_id):
     return HttpResponse("You're editing layout %s." % layout_id)
 
